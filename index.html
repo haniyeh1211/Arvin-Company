@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta name="x-poe-datastore-behavior" content="local_only">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت جامع شرکت فناوران تجهیزات توسعه آروین</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#818CF8',
+                        accent: '#F59E0B'
+                    },
+                    fontFamily: {
+                        'vazir': ['Vazirmatn', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(28, 28, 30, 0.8);
+        }
+        
+        .notification {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+        
+        .rotating {
+            animation: rotate 1s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #5D5CDE, #818CF8, #F59E0B);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .product-card:hover {
+            border-color: #5D5CDE;
+            box-shadow: 0 20px 25px -5px rgba(93, 92, 222, 0.1);
+        }
+        
+        .ticket-status-open {
+            background: linear-gradient(135deg, #EF4444, #F87171);
+        }
+        
+        .ticket-status-pending {
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+        }
+        
+        .ticket-status-closed {
+            background: linear-gradient(135deg, #10B981, #34D399);
+        }
+        
+        .blog-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        }
+        
+        .dark .blog-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        }
+        
+        .employee-card {
+            background: linear-gradient(135deg, rgba(93, 92, 222, 0.1), rgba(129, 140, 248, 0.1));
+        }
+        
+        .sales-chart {
+            background: linear-gradient(45deg, rgba(93, 92, 222, 0.1), rgba(245, 158, 11, 0.1));
+        }
+        
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background: rgba(93, 92, 222, 0.1);
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #5D5CDE, #818CF8);
+        }
+    </style>
+    <script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <div id="notificationContainer" class="fixed top-4 left-4 z-50 space-y-3"></div>
+
+    <header class="glass-effect border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                        <i class="fas fa-building text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">شرکت فناوران تجهیزات توسعه آروین</h1>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" id="userInfo">سیستم جامع مدیریت</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="darkModeToggle" class="p-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="refreshBtn" class="p-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                        <i class="fas fa-sync-alt" id="refreshIcon"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="notificationBtn" class="p-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors relative">
+                            <i class="fas fa-bell"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 space-x-reverse text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                            <i class="fas fa-user-circle text-2xl"></i>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div id="tabContainer" class="flex space-x-1 space-x-reverse bg-gray-100 dark:bg-gray-800 p-1 rounded-xl overflow-x-auto">
+            <button class="tab-btn active flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all bg-white dark:bg-gray-700 text-primary shadow-sm" data-tab="home" id="homeTab">
+                <i class="fas fa-home ml-2"></i>صفحه اصلی
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="about">
+                <i class="fas fa-info-circle ml-2"></i>درباره ما
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="services">
+                <i class="fas fa-cogs ml-2"></i>خدمات
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="shop">
+                <i class="fas fa-shopping-cart ml-2"></i>فروشگاه
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="support">
+                <i class="fas fa-headset ml-2"></i>پشتیبانی
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="management">
+                <i class="fas fa-users-cog ml-2"></i>مدیریت
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="blog">
+                <i class="fas fa-blog ml-2"></i>بلاگ
+            </button>
+            <button class="tab-btn flex-shrink-0 py-2 px-4 rounded-xl font-medium transition-all text-gray-600 dark:text-gray-400" data-tab="contact">
+                <i class="fas fa-phone ml-2"></i>تماس
+            </button>
+        </div>
+    </div>
+
+    <div id="homePanel" class="tab-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="hero-gradient rounded-3xl p-8 md:p-12 text-white mb-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">شرکت فناوران تجهیزات توسعه آروین</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">پیشرو در ارائه راه‌حل‌های نوین فناوری و تجهیزات پیشرفته</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-primary px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-rocket ml-2"></i>شروع کنید
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-primary transition-colors">
+                        <i class="fas fa-play ml-2"></i>مشاهده ویدیو
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">محصولات فعال</h3>
+                    <i class="fas fa-box text-primary text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-primary">127</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">محصول در دسترس</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">مشتریان فعال</h3>
+                    <i class="fas fa-users text-green-500 text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-green-500">1,247</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">مشتری وفادار</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">پروژه‌های تکمیل شده</h3>
+                    <i class="fas fa-check-circle text-blue-500 text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-blue-500">98</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">پروژه موفق</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">رضایت مشتریان</h3>
+                    <i class="fas fa-star text-yellow-500 text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-yellow-500">4.8</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">از 5 امتیاز</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">آخرین فعالیت‌های شرکت</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-4 space-x-reverse p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                        <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-plus text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">محصول جدید اضافه شد</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">سیستم مدیریت هوشمند انبار به فروشگاه اضافه شد</p>
+                            <span class="text-xs text-gray-500">2 ساعت پیش</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 space-x-reverse p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                        <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-handshake text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">قرارداد جدید امضا شد</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">شرکت پتروشیمی آبادان قرارداد سیستم اتوماسیون امضا کرد</p>
+                            <span class="text-xs text-gray-500">5 ساعت پیش</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 space-x-reverse p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                        <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-purple-600 dark:text-purple-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">دوره آموزشی برگزار شد</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">وبینار آموزش سیستم‌های PLC با حضور 150 نفر</p>
+                            <span class="text-xs text-gray-500">1 روز پیش</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">محصولات پرفروش</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <img src="https://picsum.photos/48/48?random=1" alt="Product" class="w-12 h-12 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">سیستم کنترل دما</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">235 فروش</p>
+                        </div>
+                        <span class="text-green-600 dark:text-green-400 text-sm font-medium">+12%</span>
+                    </div>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <img src="https://picsum.photos/48/48?random=2" alt="Product" class="w-12 h-12 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">سنسور فشار</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">189 فروش</p>
+                        </div>
+                        <span class="text-green-600 dark:text-green-400 text-sm font-medium">+8%</span>
+                    </div>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <img src="https://picsum.photos/48/48?random=3" alt="Product" class="w-12 h-12 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">کنترلر PLC</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">156 فروش</p>
+                        </div>
+                        <span class="text-green-600 dark:text-green-400 text-sm font-medium">+15%</span>
+                    </div>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <img src="https://picsum.photos/48/48?random=4" alt="Product" class="w-12 h-12 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900 dark:text-white">HMI تاچ</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">134 فروش</p>
+                        </div>
+                        <span class="text-green-600 dark:text-green-400 text-sm font-medium">+6%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">نمودار فروش ماهانه</h3>
+                <select class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    <option value="1403">سال 1403</option>
+                    <option value="1402">سال 1402</option>
+                    <option value="1401">سال 1401</option>
+                </select>
+            </div>
+            <div class="sales-chart h-64 rounded-xl flex items-center justify-center">
+                <div class="text-center">
+                    <i class="fas fa-chart-line text-4xl text-primary mb-4"></i>
+                    <p class="text-gray-600 dark:text-gray-400">نمودار فروش در اینجا نمایش داده می‌شود</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">درباره شرکت فناوران تجهیزات توسعه آروین</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    ما با بیش از 15 سال تجربه در زمینه فناوری و اتوماسیون صنعتی، پیشرو در ارائه راه‌حل‌های نوآورانه و قابل اعتماد هستیم
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">تاریخچه شرکت</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                                08
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">1387 - تأسیس شرکت</h4>
+                                <p class="text-gray-600 dark:text-gray-400">آغاز فعالیت با تیمی متخصص در زمینه اتوماسیون</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold">
+                                12
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">1391 - گسترش فعالیت</h4>
+                                <p class="text-gray-600 dark:text-gray-400">ورود به بازار سیستم‌های کنترل صنعتی</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold">
+                                16
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">1395 - نوآوری در IoT</h4>
+                                <p class="text-gray-600 dark:text-gray-400">توسعه راه‌حل‌های اینترنت اشیا</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                                23
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">1402 - رهبری بازار</h4>
+                                <p class="text-gray-600 dark:text-gray-400">کسب عنوان شرکت برتر در اتوماسیون</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">ارزش‌های ما</h3>
+                    <div class="space-y-6">
+                        <div class="bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl">
+                            <div class="flex items-center space-x-3 space-x-reverse mb-3">
+                                <i class="fas fa-lightbulb text-primary text-xl"></i>
+                                <h4 class="font-bold text-gray-900 dark:text-white">نوآوری</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">همواره در تلاش برای ارائه جدیدترین و بهترین راه‌حل‌های فناورانه</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-6 rounded-xl">
+                            <div class="flex items-center space-x-3 space-x-reverse mb-3">
+                                <i class="fas fa-shield-alt text-green-500 text-xl"></i>
+                                <h4 class="font-bold text-gray-900 dark:text-white">کیفیت</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">تعهد به ارائه محصولات و خدمات با بالاترین استانداردهای کیفی</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-xl">
+                            <div class="flex items-center space-x-3 space-x-reverse mb-3">
+                                <i class="fas fa-users text-purple-500 text-xl"></i>
+                                <h4 class="font-bold text-gray-900 dark:text-white">مشتری محوری</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400">قرار دادن نیازها و رضایت مشتریان در مرکز تمام فعالیت‌ها</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-12">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">تیم مدیریت</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <img src="https://picsum.photos/150/150?random=5" alt="CEO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="font-bold text-gray-900 dark:text-white">مهندس علی احمدی</h4>
+                        <p class="text-primary font-medium">مدیرعامل</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">15 سال تجربه در مدیریت پروژه‌های صنعتی</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://picsum.photos/150/150?random=6" alt="CTO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="font-bold text-gray-900 dark:text-white">دکتر سارا رضایی</h4>
+                        <p class="text-primary font-medium">مدیر فنی</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">متخصص سیستم‌های کنترل و اتوماسیون</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://picsum.photos/150/150?random=7" alt="Sales Manager" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="font-bold text-gray-900 dark:text-white">مهندس رضا محمدی</h4>
+                        <p class="text-primary font-medium">مدیر فروش</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">12 سال تجربه در بازاریابی فناوری</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-trophy text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-primary">15+</h3>
+                <p class="text-gray-600 dark:text-gray-400">سال تجربه</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-green-500">1200+</h3>
+                <p class="text-gray-600 dark:text-gray-400">مشتری راضی</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-project-diagram text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-500">500+</h3>
+                <p class="text-gray-600 dark:text-gray-400">پروژه موفق</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-award text-white text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-purple-500">25+</h3>
+                <p class="text-gray-600 dark:text-gray-400">جایزه دریافتی</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="servicesPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">خدمات ما</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                ما طیف گسترده‌ای از خدمات تخصصی در زمینه اتوماسیون صنعتی و کنترل سیستم‌ها ارائه می‌دهیم
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 card-hover transition-all">
+                <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-cogs text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">اتوماسیون صنعتی</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                    طراحی و پیاده‌سازی سیستم‌های اتوماسیون پیشرفته برای خطوط تولید و فرآیندهای صنعتی
+                </p>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>برنامه‌نویسی PLC</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>طراحی HMI</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>SCADA Systems</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 card-hover transition-all">
+                <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-wifi text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">اینترنت اشیا صنعتی</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                    توسعه راه‌حل‌های IoT برای نظارت و کنترل از راه دور تجهیزات و فرآیندهای صنعتی
+                </p>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>سنسورهای هوشمند</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>پلتفرم ابری</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>تحلیل داده</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 card-hover transition-all">
+                <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-shield-alt text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">امنیت سایبری</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                    محافظت از زیرساخت‌های صنعتی در برابر تهدیدات سایبری و حملات مخرب
+                </p>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>ارزیابی امنیتی</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>فایروال صنعتی</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>نظارت 24/7</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 card-hover transition-all">
+                <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">آموزش و مشاوره</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                    برگزاری دوره‌های تخصصی و ارائه مشاوره فنی به مهندسان و تکنسین‌ها
+                </p>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>دوره‌های عملی</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>وبینارهای آنلاین</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>مشاوره تخصصی</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 card-hover transition-all">
+                <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-wrench text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">نگهداری و تعمیرات</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                    خدمات نگهداری پیشگیرانه و تعمیرات تخصصی تجهیزات اتوماسیون
+                </p>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>نگهداری پیشگیرانه</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>تعمیرات اورژانسی</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>پشتیبانی دائمی</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 card-hover transition-all">
+                <div class="service-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-chart-line text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">بهینه‌سازی فرآیند</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-6">
+                    تحلیل و بهینه‌سازی فرآیندهای تولید برای افزایش بهره‌وری و کاهش هزینه‌ها
+                </p>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>تحلیل عملکرد</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>شبیه‌سازی فرآیند</span>
+                    </li>
+                    <li class="flex items-center space-x-2 space-x-reverse">
+                        <i class="fas fa-check text-green-500"></i>
+                        <span>بهبود مستمر</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">فرآیند ارائه خدمات</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">تحلیل نیاز</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">بررسی دقیق نیازها و الزامات پروژه</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">طراحی راه‌حل</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">ارائه بهترین راه‌حل متناسب با نیاز</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">پیاده‌سازی</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">اجرای دقیق و باکیفیت پروژه</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">4</span>
+                    </div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">پشتیبانی</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">ارائه پشتیبانی دائمی و نگهداری</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="shopPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">فروشگاه تجهیزات</h2>
+                <p class="text-gray-600 dark:text-gray-400">بهترین تجهیزات اتوماسیون صنعتی</p>
+            </div>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <div class="relative">
+                    <button id="cartBtn" class="flex items-center space-x-2 space-x-reverse bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>سبد خرید</span>
+                        <span id="cartCount" class="bg-white text-primary px-2 py-1 rounded-full text-sm font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <select id="categoryFilter" class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    <option value="">همه دسته‌ها</option>
+                    <option value="plc">کنترلر PLC</option>
+                    <option value="sensor">سنسور</option>
+                    <option value="hmi">HMI</option>
+                    <option value="motor">موتور</option>
+                    <option value="cable">کابل</option>
+                </select>
+                <select id="brandFilter" class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    <option value="">همه برندها</option>
+                    <option value="siemens">زیمنس</option>
+                    <option value="schneider">اشنایدر</option>
+                    <option value="omron">امرون</option>
+                    <option value="abb">ABB</option>
+                </select>
+                <select id="priceFilter" class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    <option value="">همه قیمت‌ها</option>
+                    <option value="0-1000000">زیر 1 میلیون</option>
+                    <option value="1000000-5000000">1 تا 5 میلیون</option>
+                    <option value="5000000-10000000">5 تا 10 میلیون</option>
+                    <option value="10000000+">بالای 10 میلیون</option>
+                </select>
+                <input type="text" id="searchProduct" class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="جستجو محصول...">
+                <select id="sortFilter" class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    <option value="name-asc">نام (الف-ی)</option>
+                    <option value="name-desc">نام (ی-الف)</option>
+                    <option value="price-asc">قیمت (کم به زیاد)</option>
+                    <option value="price-desc">قیمت (زیاد به کم)</option>
+                    <option value="popular">محبوب‌ترین</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=10" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">PLC</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">کنترلر PLC زیمنس S7-1200</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">کنترلر قدرتمند برای اتوماسیون کوچک تا متوسط</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">12,500,000 تومان</span>
+                        <button onclick="addToCart(1)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=11" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-green-500/10 text-green-500 px-2 py-1 rounded-full text-xs font-medium">سنسور</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">سنسور مجاورتی امرون E2E</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">سنسور دقیق و قابل اعتماد برای کاربردهای صنعتی</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">850,000 تومان</span>
+                        <button onclick="addToCart(2)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=12" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-blue-500/10 text-blue-500 px-2 py-1 rounded-full text-xs font-medium">HMI</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">صفحه نمایش تاچ اشنایدر</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">HMI 7 اینچی با کیفیت تصویر بالا</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">3,200,000 تومان</span>
+                        <button onclick="addToCart(3)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=13" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-purple-500/10 text-purple-500 px-2 py-1 rounded-full text-xs font-medium">موتور</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">موتور سرو ABB</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">موتور سرو دقیق برای کاربردهای حساس</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">8,750,000 تومان</span>
+                        <button onclick="addToCart(4)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=14" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-orange-500/10 text-orange-500 px-2 py-1 rounded-full text-xs font-medium">کابل</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">کابل صنعتی شیلدار</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">کابل مقاوم در برابر تداخل برای کاربردهای صنعتی</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">45,000 تومان/متر</span>
+                        <button onclick="addToCart(5)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=15" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-red-500/10 text-red-500 px-2 py-1 rounded-full text-xs font-medium">اینورتر</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">اینورتر فرکانس دانفوس</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">کنترل دقیق سرعت موتورهای AC</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">5,400,000 تومان</span>
+                        <button onclick="addToCart(6)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=16" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-teal-500/10 text-teal-500 px-2 py-1 rounded-full text-xs font-medium">رله</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">رله امنیتی پیلز</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">رله امنیتی دو کانال برای کاربردهای حساس</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">1,650,000 تومان</span>
+                        <button onclick="addToCart(7)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <img src="https://picsum.photos/300/200?random=17" alt="Product" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-indigo-500/10 text-indigo-500 px-2 py-1 rounded-full text-xs font-medium">ماژول</span>
+                        <span class="text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">ماژول ورودی آنالوگ</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">ماژول 8 کانال برای ورودی‌های آنالوگ</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">2,100,000 تومان</span>
+                        <button onclick="addToCart(8)" class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <button class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                نمایش محصولات بیشتر
+                <i class="fas fa-chevron-down mr-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="supportPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div class="lg:col-span-2">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">ثبت تیکت پشتیبانی</h2>
+                    <form id="supportTicketForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">نام و نام خانوادگی</label>
+                                <input type="text" name="fullName" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">ایمیل</label>
+                                <input type="email" name="email" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">شماره تماس</label>
+                                <input type="tel" name="phone" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">دسته‌بندی</label>
+                                <select name="category" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="technical">مسئله فنی</option>
+                                    <option value="sales">فروش</option>
+                                    <option value="warranty">گارانتی</option>
+                                    <option value="training">آموزش</option>
+                                    <option value="other">سایر</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">اولویت</label>
+                            <select name="priority" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                                <option value="low">کم</option>
+                                <option value="medium" selected="">متوسط</option>
+                                <option value="high">زیاد</option>
+                                <option value="urgent">فوری</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">موضوع</label>
+                            <input type="text" name="subject" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="موضوع درخواست شما..." required="">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">توضیحات</label>
+                            <textarea name="description" rows="5" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="لطفاً مسئله خود را به تفصیل شرح دهید..." required=""></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">ضمیمه فایل</label>
+                            <input type="file" name="attachment" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" multiple="">
+                            <p class="text-xs text-gray-500 mt-1">حداکثر 5 فایل، هر فایل حداکثر 10MB</p>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-xl font-medium hover:opacity-90 transition-opacity">
+                            <i class="fas fa-paper-plane ml-2"></i>ارسال تیکت
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">راه‌های تماس</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">تلفن تماس</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">021-12345678</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">ایمیل</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">support@arvin-tech.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fab fa-telegram text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">تلگرام</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">@arvin_support</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">ساعت کاری</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">شنبه تا چهارشنبه: 8-17</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">آمار پشتیبانی</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">تیکت‌های باز</span>
+                            <span class="font-bold text-red-500">23</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">در حال بررسی</span>
+                            <span class="font-bold text-yellow-500">15</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">حل شده امروز</span>
+                            <span class="font-bold text-green-500">42</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">میانگین پاسخ</span>
+                            <span class="font-bold text-blue-500">2.5 ساعت</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">تیکت‌های من</h3>
+                <div class="flex space-x-2 space-x-reverse">
+                    <select class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                        <option value="all">همه تیکت‌ها</option>
+                        <option value="open">باز</option>
+                        <option value="pending">در انتظار</option>
+                        <option value="closed">بسته</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="ticket-status-open text-white px-3 py-1 rounded-full text-xs font-medium">باز</span>
+                            <span class="font-medium text-gray-900 dark:text-white">#T-1234</span>
+                        </div>
+                        <span class="text-sm text-gray-500">2 ساعت پیش</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">مشکل در اتصال PLC به HMI</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">سیستم PLC قادر به برقراری ارتباط با صفحه نمایش نمی‌باشد...</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">دسته: فنی | اولویت: بالا</span>
+                        <button class="text-primary hover:text-primary/80 text-sm font-medium">مشاهده جزئیات</button>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="ticket-status-pending text-white px-3 py-1 rounded-full text-xs font-medium">در انتظار</span>
+                            <span class="font-medium text-gray-900 dark:text-white">#T-1233</span>
+                        </div>
+                        <span class="text-sm text-gray-500">5 ساعت پیش</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">درخواست آموزش سیستم SCADA</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">نیاز به برگزاری جلسه آموزشی برای تیم فنی...</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">دسته: آموزش | اولویت: متوسط</span>
+                        <button class="text-primary hover:text-primary/80 text-sm font-medium">مشاهده جزئیات</button>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <span class="ticket-status-closed text-white px-3 py-1 rounded-full text-xs font-medium">بسته</span>
+                            <span class="font-medium text-gray-900 dark:text-white">#T-1232</span>
+                        </div>
+                        <span class="text-sm text-gray-500">1 روز پیش</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">مشکل در نصب نرم‌افزار</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">نرم‌افزار برنامه‌نویسی PLC نصب نمی‌شود...</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">دسته: فنی | اولویت: کم</span>
+                        <button class="text-primary hover:text-primary/80 text-sm font-medium">مشاهده جزئیات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="managementPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">کل کارکنان</h3>
+                    <i class="fas fa-users text-primary text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-primary">47</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">نفر فعال</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">حاضر امروز</h3>
+                    <i class="fas fa-user-check text-green-500 text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-green-500">42</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">89% حضور</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">در مرخصی</h3>
+                    <i class="fas fa-calendar-times text-orange-500 text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-orange-500">3</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">مرخصی استحقاقی</div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900 dark:text-white">غایب امروز</h3>
+                    <i class="fas fa-user-times text-red-500 text-xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-red-500">2</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">غیبت بدون اطلاع</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">فهرست کارکنان</h3>
+                    <div class="flex space-x-2 space-x-reverse">
+                        <select class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                            <option value="all">همه بخش‌ها</option>
+                            <option value="engineering">مهندسی</option>
+                            <option value="sales">فروش</option>
+                            <option value="support">پشتیبانی</option>
+                            <option value="admin">اداری</option>
+                        </select>
+                        <button class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-plus ml-2"></i>افزودن کارمند
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="employee-card p-4 rounded-xl">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <img src="https://picsum.photos/60/60?random=20" alt="Employee" class="w-12 h-12 rounded-full object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-gray-900 dark:text-white">مهندس احمد رضایی</h4>
+                                    <span class="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-2 py-1 rounded-full text-xs">حاضر</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">مهندس نرم‌افزار - بخش فنی</p>
+                                <p class="text-xs text-gray-500">ورود: 08:15 | خروج: -</p>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="text-blue-500 hover:text-blue-700">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-green-500 hover:text-green-700">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="employee-card p-4 rounded-xl">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <img src="https://picsum.photos/60/60?random=21" alt="Employee" class="w-12 h-12 rounded-full object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-gray-900 dark:text-white">خانم فاطمه احمدی</h4>
+                                    <span class="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 px-2 py-1 rounded-full text-xs">حاضر</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">مدیر فروش - بخش بازاریابی</p>
+                                <p class="text-xs text-gray-500">ورود: 08:30 | خروج: -</p>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="text-blue-500 hover:text-blue-700">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-green-500 hover:text-green-700">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="employee-card p-4 rounded-xl">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <img src="https://picsum.photos/60/60?random=22" alt="Employee" class="w-12 h-12 rounded-full object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-gray-900 dark:text-white">مهندس علی محمدی</h4>
+                                    <span class="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 px-2 py-1 rounded-full text-xs">مرخصی</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">مهندس سخت‌افزار - بخش فنی</p>
+                                <p class="text-xs text-gray-500">مرخصی استحقاقی تا فردا</p>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="text-blue-500 hover:text-blue-700">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-green-500 hover:text-green-700">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="employee-card p-4 rounded-xl">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <img src="https://picsum.photos/60/60?random=23" alt="Employee" class="w-12 h-12 rounded-full object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-medium text-gray-900 dark:text-white">آقای حسین کریمی</h4>
+                                    <span class="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 px-2 py-1 rounded-full text-xs">غایب</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">کارشناس پشتیبانی - بخش خدمات</p>
+                                <p class="text-xs text-gray-500">غیبت بدون اطلاع قبلی</p>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="text-blue-500 hover:text-blue-700">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-green-500 hover:text-green-700">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">پروژه‌های فعال</h3>
+                    <div class="space-y-4">
+                        <div class="border-r-4 border-blue-500 pr-4">
+                            <h4 class="font-medium text-gray-900 dark:text-white">اتوماسیون کارخانه صنایع غذایی</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">مسئول: تیم فنی</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs text-gray-500">پیشرفت: 75%</span>
+                                <span class="text-xs text-blue-500">تا 15 روز دیگر</span>
+                            </div>
+                        </div>
+                        <div class="border-r-4 border-green-500 pr-4">
+                            <h4 class="font-medium text-gray-900 dark:text-white">سیستم مانیتورینگ پتروشیمی</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">مسئول: تیم IoT</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs text-gray-500">پیشرفت: 45%</span>
+                                <span class="text-xs text-green-500">تا 30 روز دیگر</span>
+                            </div>
+                        </div>
+                        <div class="border-r-4 border-yellow-500 pr-4">
+                            <h4 class="font-medium text-gray-900 dark:text-white">بروزرسانی سیستم SCADA</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">مسئول: تیم نرم‌افزار</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs text-gray-500">پیشرفت: 90%</span>
+                                <span class="text-xs text-yellow-500">تا 5 روز دیگر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">تعطیلات پیش‌رو</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-900 dark:text-white">روز جمهوری اسلامی</span>
+                            <span class="text-xs text-gray-500">12 فروردین</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-900 dark:text-white">روز طبیعت</span>
+                            <span class="text-xs text-gray-500">13 فروردین</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-900 dark:text-white">رحلت امام خمینی</span>
+                            <span class="text-xs text-gray-500">14 خرداد</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">عملکرد ماهانه بخش‌ها</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-900 dark:text-white">بخش فنی</span>
+                            <span class="text-sm font-bold text-green-500">92%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-900 dark:text-white">بخش فروش</span>
+                            <span class="text-sm font-bold text-blue-500">87%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: 87%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-900 dark:text-white">بخش پشتیبانی</span>
+                            <span class="text-sm font-bold text-purple-500">89%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-purple-500 h-2 rounded-full" style="width: 89%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-900 dark:text-white">بخش اداری</span>
+                            <span class="text-sm font-bold text-yellow-500">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">اعلانات مدیریت</h3>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 border-r-4 border-blue-500 p-4 rounded">
+                        <h4 class="font-medium text-blue-900 dark:text-blue-100">جلسه ماهانه بخش فنی</h4>
+                        <p class="text-sm text-blue-700 dark:text-blue-200">فردا ساعت 10 صبح در سالن جلسات</p>
+                        <span class="text-xs text-blue-600">2 ساعت پیش</span>
+                    </div>
+                    <div class="bg-green-50 dark:bg-green-900/20 border-r-4 border-green-500 p-4 rounded">
+                        <h4 class="font-medium text-green-900 dark:text-green-100">بونوس عملکرد فصل</h4>
+                        <p class="text-sm text-green-700 dark:text-green-200">پرداخت بونوس برای تمام کارکنان برتر</p>
+                        <span class="text-xs text-green-600">5 ساعت پیش</span>
+                    </div>
+                    <div class="bg-orange-50 dark:bg-orange-900/20 border-r-4 border-orange-500 p-4 rounded">
+                        <h4 class="font-medium text-orange-900 dark:text-orange-100">بروزرسانی سیستم حضور و غیاب</h4>
+                        <p class="text-sm text-orange-700 dark:text-orange-200">سیستم فردا از ساعت 12 تا 14 خاموش است</p>
+                        <span class="text-xs text-orange-600">1 روز پیش</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="blogPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">بلاگ آموزشی و اخبار</h2>
+                <p class="text-gray-600 dark:text-gray-400">آخرین مقالات و اخبار فناوری</p>
+            </div>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <select class="px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    <option value="all">همه دسته‌ها</option>
+                    <option value="tutorial">آموزشی</option>
+                    <option value="news">اخبار</option>
+                    <option value="technical">فنی</option>
+                    <option value="industry">صنعت</option>
+                </select>
+                <button class="bg-primary text-white px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                    <i class="fas fa-plus ml-2"></i>مقاله جدید
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div class="lg:col-span-2 space-y-6">
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://picsum.photos/600/300?random=30" alt="Article" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">آموزشی</span>
+                            <span class="text-gray-500 text-xs">5 دقیقه مطالعه</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            راهنمای کامل برنامه‌نویسی PLC زیمنس برای مبتدیان
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            در این مقاله به طور کامل با مبانی برنامه‌نویسی کنترلرهای PLC زیمنس آشنا خواهید شد. از نصب نرم‌افزار تا نوشتن اولین برنامه...
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <img src="https://picsum.photos/40/40?random=31" alt="Author" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">مهندس احمد رضایی</p>
+                                    <p class="text-xs text-gray-500">2 روز پیش</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 space-x-reverse text-gray-500">
+                                <i class="fas fa-heart"></i>
+                                <span class="text-sm">24</span>
+                                <i class="fas fa-comment mr-3"></i>
+                                <span class="text-sm">8</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://picsum.photos/600/300?random=32" alt="Article" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                            <span class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-medium">اخبار</span>
+                            <span class="text-gray-500 text-xs">3 دقیقه مطالعه</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            آخرین پیشرفت‌های صنعت اتوماسیون در سال 2024
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            نگاهی به جدیدترین فناوری‌ها و روندهای صنعت اتوماسیون که در سال جاری تأثیر بسزایی بر صنایع مختلف خواهند داشت...
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <img src="https://picsum.photos/40/40?random=33" alt="Author" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">دکتر سارا محمدی</p>
+                                    <p class="text-xs text-gray-500">3 روز پیش</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 space-x-reverse text-gray-500">
+                                <i class="fas fa-heart"></i>
+                                <span class="text-sm">31</span>
+                                <i class="fas fa-comment mr-3"></i>
+                                <span class="text-sm">12</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://picsum.photos/600/300?random=34" alt="Article" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                            <span class="bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full text-xs font-medium">فنی</span>
+                            <span class="text-gray-500 text-xs">7 دقیقه مطالعه</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                            طراحی و پیاده‌سازی سیستم‌های SCADA مقیاس‌پذیر
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            در این مقاله اصول طراحی سیستم‌های SCADA که قابلیت گسترش و توسعه را داشته باشند، بررسی می‌شود...
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <img src="https://picsum.photos/40/40?random=35" alt="Author" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900 dark:text-white">مهندس علی کریمی</p>
+                                    <p class="text-xs text-gray-500">5 روز پیش</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2 space-x-reverse text-gray-500">
+                                <i class="fas fa-heart"></i>
+                                <span class="text-sm">18</span>
+                                <i class="fas fa-comment mr-3"></i>
+                                <span class="text-sm">6</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">مقالات پربازدید</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3 space-x-reverse">
+                            <img src="https://picsum.photos/80/60?random=36" alt="Article" class="w-16 h-12 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">
+                                    نکات کلیدی در انتخاب سنسورهای صنعتی
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">1.2k بازدید</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 space-x-reverse">
+                            <img src="https://picsum.photos/80/60?random=37" alt="Article" class="w-16 h-12 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">
+                                    راه‌حل‌های IoT برای صنایع کوچک و متوسط
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">980 بازدید</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 space-x-reverse">
+                            <img src="https://picsum.photos/80/60?random=38" alt="Article" class="w-16 h-12 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">
+                                    تفاوت انواع کنترلرهای PLC در بازار
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">856 بازدید</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">دسته‌بندی‌ها</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300">آموزشی</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">24</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300">اخبار</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">18</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300">فنی</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">15</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 dark:text-gray-300">صنعت</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">عضویت در خبرنامه</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        برای دریافت آخرین مقالات و اخبار فناوری در ایمیل خود عضو شوید
+                    </p>
+                    <form class="space-y-3">
+                        <input type="email" class="w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="ایمیل شما">
+                        <button type="submit" class="w-full bg-primary text-white py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                            عضویت
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">مقالات پیشنهادی</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <article class="blog-card rounded-xl overflow-hidden">
+                    <img src="https://picsum.photos/300/180?random=39" alt="Article" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span class="bg-purple-500/10 text-purple-500 px-2 py-1 rounded-full text-xs font-medium">صنعت</span>
+                        <h3 class="font-medium text-gray-900 dark:text-white mt-2 mb-1">
+                            آینده اتوماسیون در صنایع ایران
+                        </h3>
+                        <p class="text-xs text-gray-500">1 هفته پیش</p>
+                    </div>
+                </article>
+                <article class="blog-card rounded-xl overflow-hidden">
+                    <img src="https://picsum.photos/300/180?random=40" alt="Article" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span class="bg-red-500/10 text-red-500 px-2 py-1 rounded-full text-xs font-medium">آموزشی</span>
+                        <h3 class="font-medium text-gray-900 dark:text-white mt-2 mb-1">
+                            آموزش کار با HMI اشنایدر
+                        </h3>
+                        <p class="text-xs text-gray-500">1 هفته پیش</p>
+                    </div>
+                </article>
+                <article class="blog-card rounded-xl overflow-hidden">
+                    <img src="https://picsum.photos/300/180?random=41" alt="Article" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <span class="bg-teal-500/10 text-teal-500 px-2 py-1 rounded-full text-xs font-medium">فنی</span>
+                        <h3 class="font-medium text-gray-900 dark:text-white mt-2 mb-1">
+                            بهینه‌سازی شبکه‌های صنعتی
+                        </h3>
+                        <p class="text-xs text-gray-500">2 هفته پیش</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactPanel" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">تماس با ما</h2>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">نام</label>
+                            <input type="text" name="firstName" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">نام خانوادگی</label>
+                            <input type="text" name="lastName" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">ایمیل</label>
+                            <input type="email" name="email" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">شماره تماس</label>
+                            <input type="tel" name="phone" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">شرکت</label>
+                        <input type="text" name="company" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">موضوع</label>
+                        <select name="subject" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" required="">
+                            <option value="">انتخاب کنید</option>
+                            <option value="sales">فروش و خرید</option>
+                            <option value="support">پشتیبانی فنی</option>
+                            <option value="partnership">همکاری</option>
+                            <option value="career">استخدام</option>
+                            <option value="other">سایر</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">پیام</label>
+                        <textarea name="message" rows="5" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary dark:bg-gray-700 dark:text-white" placeholder="پیام شما..." required=""></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-xl font-medium hover:opacity-90 transition-opacity">
+                        <i class="fas fa-paper-plane ml-2"></i>ارسال پیام
+                    </button>
+                </form>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">اطلاعات تماس</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white">آدرس دفتر مرکزی</h4>
+                                <p class="text-gray-600 dark:text-gray-400">تهران، خیابان ولیعصر، بالاتر از چهارراه ولیعصر، پلاک 1234</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white">تلفن تماس</h4>
+                                <p class="text-gray-600 dark:text-gray-400">021-12345678</p>
+                                <p class="text-gray-600 dark:text-gray-400">021-87654321</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white">ایمیل</h4>
+                                <p class="text-gray-600 dark:text-gray-400">info@arvin-tech.com</p>
+                                <p class="text-gray-600 dark:text-gray-400">sales@arvin-tech.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900 dark:text-white">ساعات کاری</h4>
+                                <p class="text-gray-600 dark:text-gray-400">شنبه تا چهارشنبه: 8:00 - 17:00</p>
+                                <p class="text-gray-600 dark:text-gray-400">پنج‌شنبه: 8:00 - 13:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">شبکه‌های اجتماعی</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="#" class="flex items-center justify-center space-x-2 space-x-reverse bg-blue-500 text-white p-3 rounded-xl hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                            <span>لینکدین</span>
+                        </a>
+                        <a href="#" class="flex items-center justify-center space-x-2 space-x-reverse bg-blue-400 text-white p-3 rounded-xl hover:bg-blue-500 transition-colors">
+                            <i class="fab fa-telegram"></i>
+                            <span>تلگرام</span>
+                        </a>
+                        <a href="#" class="flex items-center justify-center space-x-2 space-x-reverse bg-green-500 text-white p-3 rounded-xl hover:bg-green-600 transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>واتساپ</span>
+                        </a>
+                        <a href="#" class="flex items-center justify-center space-x-2 space-x-reverse bg-red-500 text-white p-3 rounded-xl hover:bg-red-600 transition-colors">
+                            <i class="fab fa-youtube"></i>
+                            <span>یوتیوب</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">نقشه</h3>
+                    <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-map text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500">نقشه اینجا نمایش داده می‌شود</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">سوالات متداول</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-2">چه خدماتی ارائه می‌دهید؟</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">ما خدمات طراحی، نصب و راه‌اندازی سیستم‌های اتوماسیون صنعتی، برنامه‌نویسی PLC، طراحی HMI و پشتیبانی فنی ارائه می‌دهیم.</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-2">آیا گارانتی ارائه می‌دهید؟</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">بله، تمام محصولات و خدمات ما دارای گارانتی معتبر هستند. مدت گارانتی بسته به نوع محصول متفاوت است.</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-2">آموزش فنی ارائه می‌دهید؟</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">بله، دوره‌های آموزشی متنوعی در زمینه اتوماسیون، برنامه‌نویسی PLC و سایر موضوعات فنی برگزار می‌کنیم.</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-2">پشتیبانی فنی چگونه است؟</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">تیم پشتیبانی ما آماده ارائه خدمات 24/7 است. می‌توانید از طریق تلفن، ایمیل یا سیستم تیکت با ما در تماس باشید.</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-2">مدت زمان تحویل پروژه چقدر است؟</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">مدت زمان تحویل بسته به پیچیدگی و حجم پروژه متفاوت است. معمولاً بین 2 تا 12 هفته زمان نیاز است.</p>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-2">امکان مشاوره رایگان وجود دارد؟</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">بله، جلسه مشاوره اولیه کاملاً رایگان است. می‌توانید با تیم فنی ما در تماس باشید.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="glass-effect rounded-2xl p-8 max-w-2xl w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">سبد خرید</h2>
+                <button id="closeCartModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cartItems" class="space-y-4 mb-6">
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                <div class="flex justify-between items-center text-xl font-bold text-gray-900 dark:text-white mb-4">
+                    <span>مجموع:</span>
+                    <span id="cartTotal">0 تومان</span>
+                </div>
+                <div class="flex space-x-3 space-x-reverse">
+                    <button id="clearCart" class="flex-1 bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 transition-colors">
+                        پاک کردن سبد
+                    </button>
+                    <button id="checkout" class="flex-1 bg-primary text-white py-3 rounded-xl hover:bg-primary/90 transition-colors">
+                        تسویه حساب
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        let cart = [];
+        const products = [{
+            id: 1,
+            name: 'کنترلر PLC زیمنس S7-1200',
+            price: 12500000,
+            image: 'https://picsum.photos/300/200?random=10'
+        }, {
+            id: 2,
+            name: 'سنسور مجاورتی امرون E2E',
+            price: 850000,
+            image: 'https://picsum.photos/300/200?random=11'
+        }, {
+            id: 3,
+            name: 'صفحه نمایش تاچ اشنایدر',
+            price: 3200000,
+            image: 'https://picsum.photos/300/200?random=12'
+        }, {
+            id: 4,
+            name: 'موتور سرو ABB',
+            price: 8750000,
+            image: 'https://picsum.photos/300/200?random=13'
+        }, {
+            id: 5,
+            name: 'کابل صنعتی شیلدار',
+            price: 45000,
+            image: 'https://picsum.photos/300/200?random=14'
+        }, {
+            id: 6,
+            name: 'اینورتر فرکانس دانفوس',
+            price: 5400000,
+            image: 'https://picsum.photos/300/200?random=15'
+        }, {
+            id: 7,
+            name: 'رله امنیتی پیلز',
+            price: 1650000,
+            image: 'https://picsum.photos/300/200?random=16'
+        }, {
+            id: 8,
+            name: 'ماژول ورودی آنالوگ',
+            price: 2100000,
+            image: 'https://picsum.photos/300/200?random=17'
+        }];
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification bg-white dark:bg-gray-800 border-l-4 ${
+                type === 'success' ? 'border-green-500' : 
+                type === 'error' ? 'border-red-500' : 
+                type === 'warning' ? 'border-yellow-500' : 'border-blue-500'
+            } rounded-2xl shadow-xl p-4 max-w-sm`;
+
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <i class="fas ${
+                            type === 'success' ? 'fa-check-circle text-green-500' : 
+                            type === 'error' ? 'fa-exclamation-circle text-red-500' : 
+                            type === 'warning' ? 'fa-exclamation-triangle text-yellow-500' : 'fa-info-circle text-blue-500'
+                        }"></i>
+                    </div>
+                    <div class="mr-3">
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">${message}</p>
+                    </div>
+                    <button class="mr-auto -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('notificationContainer').appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('fade-out');
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('fa-IR').format(price) + ' تومان';
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({...product,
+                        quantity: 1
+                    });
+                }
+                updateCartCount();
+                showNotification('محصول به سبد خرید اضافه شد', 'success');
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartModal();
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function updateCartModal() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-center text-gray-500 dark:text-gray-400">سبد خرید خالی است</p>';
+                cartTotal.textContent = '0 تومان';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-4 space-x-reverse border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-medium text-gray-900 dark:text-white">${item.name}</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">قیمت: ${formatPrice(item.price)}</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">تعداد: ${item.quantity}</p>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = formatPrice(total);
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-white', 'dark:bg-gray-700', 'text-primary', 'shadow-sm');
+                btn.classList.add('text-gray-600', 'dark:text-gray-400');
+            });
+
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active', 'bg-white', 'dark:bg-gray-700', 'text-primary', 'shadow-sm');
+            document.querySelector(`[data-tab="${tabName}"]`).classList.remove('text-gray-600', 'dark:text-gray-400');
+
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            const targetPanel = {
+                'home': 'homePanel',
+                'about': 'aboutPanel',
+                'services': 'servicesPanel',
+                'shop': 'shopPanel',
+                'support': 'supportPanel',
+                'management': 'managementPanel',
+                'blog': 'blogPanel',
+                'contact': 'contactPanel'
+            }[tabName];
+
+            document.getElementById(targetPanel).classList.remove('hidden');
+        }
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.dataset.tab;
+                switchTab(tabName);
+            });
+        });
+
+        document.getElementById('refreshBtn').addEventListener('click', () => {
+            const refreshIcon = document.getElementById('refreshIcon');
+            refreshIcon.classList.add('rotating');
+            setTimeout(() => {
+                refreshIcon.classList.remove('rotating');
+                showNotification('اطلاعات به‌روزرسانی شد', 'success');
+            }, 1000);
+        });
+
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        document.getElementById('cartBtn').addEventListener('click', () => {
+            updateCartModal();
+            document.getElementById('cartModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeCartModal').addEventListener('click', () => {
+            document.getElementById('cartModal').classList.add('hidden');
+        });
+
+        document.getElementById('clearCart').addEventListener('click', () => {
+            cart = [];
+            updateCartCount();
+            updateCartModal();
+            showNotification('سبد خرید پاک شد', 'info');
+        });
+
+        document.getElementById('checkout').addEventListener('click', () => {
+            if (cart.length === 0) {
+                showNotification('سبد خرید خالی است', 'warning');
+                return;
+            }
+            showNotification('به صفحه پرداخت منتقل می‌شوید...', 'info');
+            document.getElementById('cartModal').classList.add('hidden');
+        });
+
+        document.getElementById('supportTicketForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showNotification('تیکت شما با موفقیت ثبت شد', 'success');
+            e.target.reset();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showNotification('پیام شما ارسال شد. به زودی با شما تماس خواهیم گرفت', 'success');
+            e.target.reset();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+        });
+    </script>
+
+
+</body>
+
+</html>
